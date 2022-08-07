@@ -32,3 +32,4 @@ django32:
   script:
     - python manage.py check
     - python manage.py test
+
