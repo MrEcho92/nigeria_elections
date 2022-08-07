@@ -1,0 +1,25 @@
+runtime: python38
+
+inbound_services:
+- warmup
+
+handlers:
+- url: /static/
+  static_dir: static
+  secure: always
+  http_headers:
+    Strict-Transport-Security: "max-age=2592000; includeSubdomains"
+    X-Content-Type-Options: "nosniff"
+    X-Frame-Options: "DENY"
+    X-XSS-Protection: "1; mode=block"
+
+- url: /.*
+  secure: always
+  script: auto
+
+# When using Serverless VPC connector (to access Cloud Memory Store for
+# example) un-comment the following adding GCP project ID, location (eg
+# us-central1) and connector name
+#
+# vpc_access_connector:
+#    name: "projects/<GCP Project ID>/locations/<location>/connectors/<connector name>"

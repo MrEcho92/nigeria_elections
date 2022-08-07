@@ -1,0 +1,28 @@
+{
+  "buckets": {
+    "example.appspot.com": {
+      "kind": "storage#bucket",
+      "id": "example.appspot.com",
+      "selfLink": "/storage/v1/b/example.appspot.com",
+      "projectNumber": "1234",
+      "name": "example.appspot.com",
+      "timeCreated": "2022-08-07 08:34:31.141235",
+      "updated": "2022-08-07 08:34:31.141235",
+      "metageneration": "1",
+      "iamConfiguration": {
+        "bucketPolicyOnly": {
+          "enabled": false
+        },
+        "uniformBucketLevelAccess": {
+          "enabled": false
+        }
+      },
+      "location": "US",
+      "locationType": "multi-region",
+      "storageClass": "STANDARD",
+      "etag": "CAE="
+    }
+  },
+  "objects": {},
+  "resumable": {}
+}
