@@ -1,37 +1,32 @@
-# Analytics project
+# Analytics Project
 
-This is a barebones project template configured for use on Google App Engine Standard
-using the [Djangae](https://github.com/potatolondon/djangae) framework.
+This project utilises data to keep users informed. 
 
+## Prerequisite 
 
+- Download Java 17 sdk for your computer
+[install Java](https://www.oracle.com/java/technologies/downloads/#jdk17-mac)
+- Download Google SDK and follow instructions for installation [gcloud CLI](https://cloud.google.com/sdk/docs/install)
 
-Install Java 17
-[Java](https://www.oracle.com/java/technologies/downloads/#jdk17-mac)
+# Formatting and linting
+ - black
+ - isort
+ - flake
 
-# Using the Djangae Scaffold template
+ ## Running BE formatter and linter
+ - To format you code run `black .`
+ - To check linting run `flake8 .`
+ - To sort imports run `isort .`
 
-1. Install any version of Django supported by Djangae
+# Running the project
+
+1. Clone this repo from [here](git@gitlab.com:chigozie10/analytics.git)
 2. Run the following command, replacing `myproject` with the name of your project
-
-```
-$ django-admin.py startproject --template https://gitlab.com/potato-oss/djangae/djangae-scaffold/-/archive/master/djangae-scaffold-master.zip --extension py,yaml,md myproject
-```
-
-3. Create a virtualenv and activate it (e.g. `virtualenv .venv && source .venv/bin/activate`)
+3. Create a virtualenv and activate it (e.g. `python3 -m venv .venv && source .venv/bin/activate`)
 4. Install the requirements: `pip3 install -r requirements.txt`
 5. Install the local development requirements: `pip3 install -r requirements-dev.txt`
+6. Run `python3 manage.py runserver`
 
-# Differences to the Standard Template
 
- - Settings are divided into "default" and "production". Production sets DEBUG=False, and a number of security
-   settings
- - App Engine specific files are included (e.g. app.yaml, .gcloudignore)
- - requirements.txt and requirements-dev.txt are provided for basic Djangae functionality
- - manage.py is updated to run various Google Cloud emulators locally when running management commands
- - '.appspot.com' is added to ALLOWED_HOSTS by default
- - [Google Cloud Logging](https://cloud.google.com/logging/docs) is enabled in production
- - [Google Cloud Debugger](https://cloud.google.com/debugger/docs/setup/python) is enabled in production
- - Google IAP authentication, and the `djangae.contrib.googleauth` User model are both configured by default
- - Username/password authentication backend is disabled by default
- - The default database is configured to use Google Cloud Datastore
- - Staticfiles is configured to serve from the 'static' folder by default
+# Testing
+- Tbc

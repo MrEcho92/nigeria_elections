@@ -1,4 +1,4 @@
-from .default import *
+from .default import *  # noqa: F403
 
 ALLOWED_HOSTS = [
     ".appspot.com",
