@@ -7,29 +7,31 @@
 # See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 
 stages:
+  - lint
   - test
+  - deploy
 
 include:
 - template: Security/SAST.gitlab-ci.yml
 
+variables:
+  # Ignore line lengths, blank lines and multiple
+  FLAKE8_ARGS: "--ignore=E501,E302,E241, "
+
 sast:
   stage: test
 
-django32:
-  image: python:3.8
-  stage: test
+.set_env_python:
   before_script:
-    - echo "deb http://security.debian.org/debian-security stretch/updates main" | tee -a /etc/apt/sources.list.d/openjdk.list
-    - echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-    - curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-    - apt-get update
-    - apt-get -y install openjdk-11-jdk google-cloud-sdk google-cloud-sdk-app-engine-python google-cloud-sdk-datastore-emulator
-    - pip install django==3.2
-    - django-admin.py startproject --template . --extension py,yaml,md myproject
-    - cd myproject
-    - pip install -r requirements.txt
-    - pip install -r requirements-dev.txt
+    - python3 -m venv .venv
+    - source .venv/bin/activate
+    - pip3 install -r requirements.txt -r requirements-dev.txt
+
+lint:be:
+  image: python:3.8
+  stage: lint
+  extends: .set_env_python
   script:
-    - python manage.py check
-    - python manage.py test
+    - black --check . && isort . --check-only 
+
 
