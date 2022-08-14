@@ -1,6 +1,6 @@
 # Analytics Project
 
-This project utilises data to keep users informed. 
+This project utilises data to keep users informed. This project is built using [Djangae scaffold](https://gitlab.com/potato-oss/djangae/djangae-scaffold)
 
 ## Prerequisite 
 
@@ -29,4 +29,4 @@ This project utilises data to keep users informed.
 
 
 # Testing
-- Tbc
+- We write tests for this project.

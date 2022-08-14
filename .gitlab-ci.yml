@@ -7,6 +7,7 @@
 # See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 
 stages:
+  - prepare
   - lint
   - test
   - deploy
@@ -16,22 +17,68 @@ include:
 
 variables:
   # Ignore line lengths, blank lines and multiple
-  FLAKE8_ARGS: "--ignore=E501,E302,E241, "
+  FLAKE8_ARGS: "--ignore=E501,E302,E241"
 
-sast:
-  stage: test
+prepare-image:
+  stage: prepare
+  image: docker:latest
+  interruptible: true
+  services:
+    - docker:dind
+  variables:
+    DOCKERFILE: >- # build image 
+        FROM python:3.9\n
+        RUN apt-get update -qy\n
+        RUN echo "deb http://security.debian.org/debian-security stretch/updates main" | tee -a /etc/apt/sources.list.d/openjdk.list\n
+        RUN echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list\n
+        RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -\n
+        RUN apt-get update -qy\n
+        RUN apt-get -y install openjdk-11-jdk google-cloud-sdk google-cloud-sdk-app-engine-python google-cloud-sdk-datastore-emulator
+  before_script: # Put created DOCKERFILE in Dockerfile
+    - echo -e $DOCKERFILE > Dockerfile
+    - cat Dockerfile
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker pull $CI_REGISTRY_IMAGE:analytics || true
+    - docker build --cache-from $CI_REGISTRY_IMAGE:analytics -t $CI_REGISTRY_IMAGE:analytics .
+    - docker push $CI_REGISTRY_IMAGE:analytics
 
 .set_env_python:
+  image: $CI_REGISTRY_IMAGE:analytics
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  cache:
+    - key:
+          files:
+            - requirments.txt
+            - requirements-dev.txt
+      paths:
+        - .cache/pip
+        - .venv/
+  needs: ["prepare-image"]
   before_script:
     - python3 -m venv .venv
     - source .venv/bin/activate
     - pip3 install -r requirements.txt -r requirements-dev.txt
 
+sast:
+  stage: test
+
 lint:be:
-  image: python:3.8
   stage: lint
+  interruptible: true
   extends: .set_env_python
   script:
     - black --check . && isort . --check-only 
 
+test:python3:
+  stage: test
+  extends: .set_env_python
+  interruptible: true
+  script:
+    - echo "Running python be test"
+    - python3 manage.py test
+  artifacts:
+    reports:
+      junit: .reports/junit.xml
 
