@@ -164,3 +164,6 @@ CSP_SCRIPT_SRC = ("'self'",)
 CSP_IMG_SRC = ("'self'",)
 CSP_MEDIA_SRC = ("'self'",)
 CSP_CONNECT_SRC = ("'self'",)
+
+
+LOGIN_URL = "/_dj/login/"
