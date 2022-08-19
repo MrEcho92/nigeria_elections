@@ -3,10 +3,21 @@
 import os
 import sys
 
+from djangae.environment import is_production_environment
+
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings.default")
+
+    if is_production_environment():
+        settings = "core.settings.production"
+    else:
+        if "test" in sys.argv:
+            settings = "core.settings.test"
+        else:
+            settings = "core.settings.default"
+
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", settings)
 
     try:
         from django.core.management import execute_from_command_line

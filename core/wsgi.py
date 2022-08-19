@@ -14,8 +14,12 @@ import google.cloud.logging
 from djangae.environment import is_production_environment
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings.default")
+if is_production_environment():
+    settings = "core.settings.production"
+else:
+    settings = "core.settings.default"
 
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", settings)
 
 if is_production_environment():
     try:
