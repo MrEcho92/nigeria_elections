@@ -25,7 +25,7 @@ This project utilises data to keep users informed. This project is built using [
 3. Create a virtualenv and activate it (e.g. `python3 -m venv .venv && source .venv/bin/activate`)
 4. Install the requirements: `pip3 install -r requirements.txt`
 5. Install the local development requirements: `pip3 install -r requirements-dev.txt`
-6. Run `python3 manage.py runserver`
+6. Run `python3 manage.py runserver` or `./manage.py runserver`
 
 
 # Testing
