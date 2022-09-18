@@ -1,7 +1,8 @@
-from core.models import TimeStampModel
 from django.db import models
 from gcloudc.db import transaction
 from gcloudc.db.models.fields.charfields import CharField
+
+from core.models import TimeStampModel
 
 
 class Question(TimeStampModel):
