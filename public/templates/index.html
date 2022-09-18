@@ -1,26 +1,38 @@
 {% extends "base.html" %}
 
+{% block title %} Home {% endblock %}
+
 {% block content %}
 
-<h1>Who should I vote for? 2023 Nigeria Presidental Election: Compare the party manifestos</h1>
+<div>
+    {% include "manifestos.html" %}
+</div>
 
-<ul class="collapsible expandable">
-    <li>
-        <div class="collapsible-header"><i class="material-icons">filter_drama</i>Atiku Abubakar (PDP)</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-        <div class="collapsible-header"><i class="material-icons">place</i>Bola Ahmed Tinubu (APC)</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-        <div class="collapsible-header"><i class="material-icons">whatshot</i>Peter Obi (LP)</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-        <div class="collapsible-header"><i class="material-icons">whatshot</i>Omoyele Sowore (AAC)</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-</ul>
+{% if question %}
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <h4>{{ question.question_text }}</h4>
+        {% for choice in choices %}
+        <p>
+            <label for="{{ choice.id }}">
+                <input type="radio" name="choice" id="{{ choice.id }}" value="{{ choice.id }}" />
+                <span>{{ choice.choice_text }}</span>
+                {% for choice_id, val in choice_percent.items %}
+                {% if choice_id == choice.id %}
+                <p>{{val}}%</p>
+                <div class="progress">
+                    <div class="determinate" style="width: {{val}}%"></div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </label>
+        </p>
+        {% endfor %}
+        <input type="submit" class="waves-effect waves-light btn" value="Vote Now">
+    </form>
+</div>
+{% endif %}
+
 
 {% endblock %}

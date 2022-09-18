@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "djangae.contrib.googleauth",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -43,9 +44,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "djangae",
     "djangae.tasks",
-    "djangae.contrib.googleauth",
     "djangae.contrib.security",
     # Apps
+    "core",
+    "poll",
     "public",
 ]
 
@@ -120,7 +122,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Enable the Djangae IAP backend, but not Django's username/password one by default
 AUTHENTICATION_BACKENDS = ("djangae.contrib.googleauth.backends.iap.IAPBackend",)
 
-AUTH_USER_MODEL = "googleauth.User"
+AUTH_USER_MODEL = "core.User"
 
 
 # Internationalization
