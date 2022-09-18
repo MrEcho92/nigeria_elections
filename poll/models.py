@@ -1,8 +1,7 @@
+from core.models import TimeStampModel
 from django.db import models
 from gcloudc.db import transaction
 from gcloudc.db.models.fields.charfields import CharField
-
-from core.models import TimeStampModel
 
 
 class Question(TimeStampModel):
@@ -38,8 +37,6 @@ class Question(TimeStampModel):
             for choice_id, vote in choice_total:
                 result["choice_by_percent"][choice_id] = round(vote / total_votes * 100)
             result["total_vote"] = total_votes
-        else:
-            result["total_vote"] = 0
 
         return result
 
