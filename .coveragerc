@@ -1,0 +1,8 @@
+# .coveragerc to control coverage.py
+[run]
+omit = 
+    # omit these files
+    main.py
+    manage.py
+    core/*
+
