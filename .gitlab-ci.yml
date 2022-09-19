@@ -84,5 +84,5 @@ test:python3:
     reports:
       coverage_report:
         coverage_format: cobertura
-        path: cobertura-coverage.xml
+        path: $CI_PROJECT_DIR/cobertura-coverage.xml
 
