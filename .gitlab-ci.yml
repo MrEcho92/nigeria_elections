@@ -77,8 +77,12 @@ test:python3:
   interruptible: true
   script:
     - echo "Running python be test"
-    - python3 manage.py test
+    - coverage run --source='.' manage.py test --noinput
+    - coverage report
+    - coverage xml
   artifacts:
     reports:
-      junit: .reports/junit.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/cobertura-coverage.xml
 
