@@ -1,0 +1,35 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+/* pushing footer to bottom */
+.page-wrapper {
+    min-height: 100vh;
+}
+
+.poll_box {
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: #eceff1;
+    margin: 20px 0;
+}
+
+.poll_box__mb {
+    padding: 15px 15px;
+}
+
+.poll_box__mb input[type='submit'] {
+    color: #fff;
+}
+
+.manifesto_learn_more {
+    margin-top: 30px;
+}
+
+.md-grid {
+    padding-top: 20px;
+}

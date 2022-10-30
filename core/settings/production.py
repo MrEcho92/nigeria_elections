@@ -31,6 +31,9 @@ SECURE_REDIRECT_EXEMPT = [
     r"^_ah/"
 ]
 
+# Enable JWT by setting
+GOOGLEAUTH_IAP_JWT_ENABLED = True
+
 # CSP Configuration
 
 CSP_REPORT_ONLY = False
