@@ -1,7 +1,7 @@
 
 # stop any execution with non-zero status
 set -ex
-GIT_VERSION='git rev-parse --short @'
+GIT_VERSION=`git rev-parse --short @`
 VERSION=${DEPLOY_VERSION:-$GIT_VERSION}
 
 # args passed in ./scripts/deploy.sh <arg> 
@@ -22,4 +22,7 @@ echo "static files generated...done"
 echo "GIT_VERISON: $GIT_VERSION VERSION: $VERSION "
 
 echo "Deploying via Google App Engine"
-gcloud app deploy --project=vision2023 --no-promote --version $VERSION
+gcloud app deploy --project=vision2023 --no-promote --version=$VERSION
+
+echo "Removing django static build folder"
+rm -rf ./static/*
