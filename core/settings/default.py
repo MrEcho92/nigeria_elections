@@ -163,8 +163,14 @@ GOOGLEAUTH_IAP_JWT_ENABLED = False
 CSP_REPORT_ONLY = True
 
 CSP_DEFAULT_SRC = ("'self'",)
-CSP_STYLE_SRC = ("'self'",)
-CSP_FONT_SRC = ("'self'",)
+CSP_STYLE_SRC = (
+    "'self'",
+    "https://cdnjs.cloudflare.com",
+)
+CSP_FONT_SRC = (
+    "'self'",
+    "https://fonts.googleapis.com",
+)
 CSP_FRAME_SRC = ("'self'",)
 CSP_CHILD_SRC = ("'self'",)
 CSP_SCRIPT_SRC = ("'self'",)
