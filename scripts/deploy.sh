@@ -23,7 +23,7 @@ echo "static files generated...done"
 echo "GIT_VERISON: $GIT_VERSION VERSION: $VERSION "
 
 echo "Deploying via Google App Engine"
-gcloud app deploy --project=vision2023 --no-promote --version=$VERSION
+gcloud app deploy --project vision2023-367116 --no-promote --version $VERSION
 
 echo "Removing django static build folder"
 rm -rf ./static/*
