@@ -171,6 +171,7 @@ CSP_STYLE_SRC = (
 CSP_FONT_SRC = (
     "'self'",
     "https://fonts.googleapis.com",
+    "https://fonts.gstatic.com",
 )
 CSP_FRAME_SRC = ("'self'",)
 CSP_CHILD_SRC = ("'self'",)
