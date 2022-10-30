@@ -8,7 +8,7 @@ VERSION=${DEPLOY_VERSION:-$GIT_VERSION}
 # TEST=$1
 # echo $TEST 
 
-if [[ "$VIRTUAL_ENV" == ""]]
+if [[ "$VIRTUAL_ENV" == "" ]]
 then
     echo "Aborting... you are not in virtualenv."
     exit 1
