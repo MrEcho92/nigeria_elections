@@ -8,10 +8,9 @@ VERSION=${DEPLOY_VERSION:-$GIT_VERSION}
 # TEST=$1
 # echo $TEST 
 
-if [[ "$VIRTUAL_ENV" == "" ]]
+if [[$VIRTUAL_ENV == ""]]: 
 then
     echo "Aborting... you are not in virtualenv."
-    exit 1
 fi
 
 echo "Removing static build folder"
@@ -23,7 +22,7 @@ echo "static files generated...done"
 echo "GIT_VERISON: $GIT_VERSION VERSION: $VERSION "
 
 echo "Deploying via Google App Engine"
-gcloud app deploy --project vision2023-367116 --no-promote --version $VERSION
+gcloud app deploy --project=vision2023 --no-promote --version=$VERSION
 
 echo "Removing django static build folder"
-rm -rf ./static/
+rm -rf ./static/*
