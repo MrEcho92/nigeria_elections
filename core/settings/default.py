@@ -166,6 +166,7 @@ CSP_DEFAULT_SRC = ("'self'",)
 CSP_STYLE_SRC = (
     "'self'",
     "https://cdnjs.cloudflare.com",
+    "https://fonts.googleapis.com",
 )
 CSP_FONT_SRC = (
     "'self'",
@@ -173,7 +174,10 @@ CSP_FONT_SRC = (
 )
 CSP_FRAME_SRC = ("'self'",)
 CSP_CHILD_SRC = ("'self'",)
-CSP_SCRIPT_SRC = ("'self'",)
+CSP_SCRIPT_SRC = (
+    "'self'",
+    "https://cdnjs.cloudflare.com",
+)
 CSP_IMG_SRC = ("'self'",)
 CSP_MEDIA_SRC = ("'self'",)
 CSP_CONNECT_SRC = ("'self'",)
