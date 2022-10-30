@@ -152,6 +152,11 @@ STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, "static"))
 CLOUD_TASKS_LOCATION = "europe-west"
 
 
+GOOGLEAUTH_IAP_JWT_AUDIENCE = "/projects/1068316479168/apps/vision2023-367116"
+
+# Disable JWT by setting
+GOOGLEAUTH_IAP_JWT_ENABLED = False
+
 # CSP Configuration
 # https://django-csp.readthedocs.io/en/latest/configuration.html
 
@@ -169,3 +174,7 @@ CSP_CONNECT_SRC = ("'self'",)
 
 
 LOGIN_URL = "/_dj/login/"
+
+# Security
+CSRF_USE_SESSIONS = True
+CSRF_COOKIE_HTTPONLY = True

@@ -37,3 +37,7 @@ def index(request):
             return redirect("public:index")
 
     return render(request, "index.html", context=context)
+
+
+def aboutus(request):
+    return render(request, "about.html")

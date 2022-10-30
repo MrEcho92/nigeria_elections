@@ -76,13 +76,13 @@ test:python3:
   extends: .set_env_python
   interruptible: true
   script:
-    - echo "Running python be test"
-    - coverage run --source='.' manage.py test --noinput
+    - echo "Running python backend test"
+    - coverage run --source . manage.py test --noinput
     - coverage report
     - coverage xml
   artifacts:
     reports:
       coverage_report:
         coverage_format: cobertura
-        path: coverage/cobertura-coverage.xml
+        path: coverage.xml
 
