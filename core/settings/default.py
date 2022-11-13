@@ -120,7 +120,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Enable the Djangae IAP backend, but not Django's username/password one by default
-AUTHENTICATION_BACKENDS = ("djangae.contrib.googleauth.backends.iap.IAPBackend",)
+AUTHENTICATION_BACKENDS = (
+    "djangae.contrib.googleauth.backends.iap.IAPBackend",
+    "djangae.contrib.googleauth.backends.oauth2.OAuthBackend",
+)
 
 AUTH_USER_MODEL = "core.User"
 
@@ -189,3 +192,7 @@ LOGIN_URL = "/_dj/login/"
 # Security
 CSRF_USE_SESSIONS = True
 CSRF_COOKIE_HTTPONLY = True
+
+GOOGLEAUTH_OAUTH_SCOPES = ["openid", "profile", "email"]
+GOOGLEAUTH_CLIENT_ID = "xx"
+GOOGLEAUTH_CLIENT_SECRET = "xx"

@@ -24,6 +24,7 @@ admin.autodiscover()
 
 urlpatterns = [
     path("admin/", admin_site.urls),
-    path("auth/", include("djangae.contrib.googleauth.urls")),
+    path("googleauth/", include("djangae.contrib.googleauth.urls")),
+    # path("auth/", include("djangae.contrib.googleauth.urls")),
     path("", include("public.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

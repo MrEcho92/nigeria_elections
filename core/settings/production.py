@@ -1,8 +1,15 @@
+from core.secrets import Secrets
+from djangae.contrib.secrets import get
+from django.urls.base import reverse_lazy
+
 from .default import *  # noqa: F403
 
 ALLOWED_HOSTS = [
     ".appspot.com",
 ]
+
+APP_SECRETS = get(Secrets)
+SECRET_KEY = APP_SECRETS.secret_key
 
 # Disable DEBUG on production
 DEBUG = False
@@ -31,8 +38,16 @@ SECURE_REDIRECT_EXEMPT = [
     r"^_ah/"
 ]
 
+LOGIN_URL = reverse_lazy("googleauth_oauth2login")
+LOGIN_REDIRECT_URL = "/"
+
 # Enable JWT by setting
 GOOGLEAUTH_IAP_JWT_ENABLED = True
+
+GOOGLEAUTH_CLIENT_ID = (
+    "1068316479168-1rpf02l9i0c5v598764rhls71ieu59t3.apps.googleusercontent.com"
+)
+GOOGLEAUTH_CLIENT_SECRET = APP_SECRETS.google_oauth_client_secret
 
 # CSP Configuration
 
