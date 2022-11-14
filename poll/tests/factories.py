@@ -27,9 +27,10 @@ def choice_factory(**kwargs):
     fuzz = random_string()
     choice_text = kwargs.pop("choice_text", fuzz)
     question = kwargs.pop("question", None) or question_factory()
+    votes = kwargs.pop("votes", 0)
 
     create_kwargs = dict(
-        {"choice_text": choice_text, "question": question},
+        {"choice_text": choice_text, "question": question, "votes": votes},
         **kwargs,
     )
 
