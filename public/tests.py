@@ -13,3 +13,9 @@ class PublicTestCase(TestCase):
         resp = self.client.get(url)
 
         self.assertEqual(resp.status_code, 200)
+
+    def test_about_page(self):
+        url = reverse("public:about")
+        response = self.client.get(url)
+
+        self.assertEqual(response.status_code, 200)
