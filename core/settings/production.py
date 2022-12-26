@@ -1,7 +1,6 @@
+from core.secrets import Secrets
 from djangae.contrib.secrets import get
 from django.urls.base import reverse_lazy
-
-from core.secrets import Secrets
 
 from .default import *  # noqa: F403
 
@@ -42,6 +41,8 @@ SECURE_REDIRECT_EXEMPT = [
 LOGIN_URL = reverse_lazy("googleauth_oauth2login")
 LOGIN_REDIRECT_URL = "/"
 
+# Enable JWT by setting
+GOOGLEAUTH_IAP_JWT_ENABLED = True
 
 GOOGLEAUTH_CLIENT_ID = (
     "1068316479168-1rpf02l9i0c5v598764rhls71ieu59t3.apps.googleusercontent.com"
