@@ -30,3 +30,7 @@ This project utilises data to keep users informed. This project is built using [
 
 # Testing
 - We write tests for this project.
+
+# Deploy 
+- We deployed out application through Google App Engine. To deploy locally, you will need to install gcloud CLI and have an account.
+- Run the script `./scripts/deploy.sh `
