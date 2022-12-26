@@ -18,6 +18,8 @@
             <div>
                 <p>Sorry, only Nigerians living abroad are required to vote. </p>
                 <a class="waves-effect green darken-4 btn-large" href="{% url 'public:index'%}">Back to homepage</a>
+                <a class="waves-effect green darken-4 btn-large" href="{% url 'public:vote-success'%}">Voting
+                    outcomes</a>
             </div>
             {% else %}
             <div class="vote-input">

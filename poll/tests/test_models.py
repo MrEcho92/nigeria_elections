@@ -1,5 +1,6 @@
 from djangae.test import TestCase
 from django.db.utils import IntegrityError
+
 from poll.models import Choice, Question, Vote
 
 from .factories import choice_factory, question_factory, vote_factory
