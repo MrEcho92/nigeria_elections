@@ -51,7 +51,14 @@ def index(request):
 
     candidates = dict(Vote.CANDIDATES)
     result = _get_vote_result(candidates)
-    context.update({"result": result})
+    candidates_value_exist = all(result.values()) if result else False
+
+    context.update(
+        {
+            "result": result,
+            "candidates_value_exist": candidates_value_exist,
+        }
+    )
 
     return render(request, "index.html", context=context)
 

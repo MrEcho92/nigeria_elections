@@ -1,6 +1,7 @@
-from core.secrets import Secrets
 from djangae.contrib.secrets import get
 from django.urls.base import reverse_lazy
+
+from core.secrets import Secrets
 
 from .default import *  # noqa: F403
 

@@ -52,7 +52,7 @@
                 <a class="waves-effect green darken-4 btn" href="{% url 'public:create-vote'%}">Cast your
                     vote</a>
             </div>
-            {% if result %}
+            {% if candidates_value_exist %}
             <div class="col l6 m6 s12">
                 {% for candidate, percent_count in result.items %}
                 <div class="progress-card">
