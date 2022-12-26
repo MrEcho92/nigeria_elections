@@ -17,11 +17,13 @@
 
 <body>
     <div class="navbar-fixed">
-        <nav class="blue darken-2">
+        <nav class="green darken-4">
             <div class="container">
                 <div class="nav-wrapper">
                     <a href="{% url 'public:index'%}" class="brand-logo">vision2023</a>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="{% url 'public:index'%}">Home</a></li>
+                        <li><a href="{% url 'public:create-vote'%}">Cast Your Vote</a></li>
                         <li><a href="{% url 'public:about'%}">About</a></li>
                         <li><a href="mailto:analytics2324@gmail.com">Contact</a></li>
                     </ul>
@@ -33,7 +35,7 @@
         {% block content %}
         {% endblock %}
     </div>
-    <footer class="page-footer blue darken-2">
+    <footer class="page-footer green darken-4">
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
@@ -45,9 +47,9 @@
                 </div>
             </div>
         </div>
-        <div class="footer-copyright blue darken-3">
+        <div class="footer-copyright green darken-4">
             <div class="container">
-                © 2022 Copyright
+                © vision2023. All Rights Reserved
                 <div class="right footer-right">
                     <a class="grey-text text-lighten-4" href="{% url 'public:about'%}">About</a>
                     <a class="grey-text text-lighten-4" href="mailto:analytics2324@gmail.com">Contact</a>

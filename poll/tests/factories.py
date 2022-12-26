@@ -1,7 +1,7 @@
 import random
 import string
 
-from poll.models import Choice, Question
+from poll.models import Choice, Question, Vote
 
 _RANDOM_ALUM = string.ascii_lowercase + string.digits
 
@@ -35,3 +35,27 @@ def choice_factory(**kwargs):
     )
 
     return Choice.objects.create(**create_kwargs)
+
+
+def vote_factory(**kwargs):
+
+    ip_address = kwargs.pop("ip_address", random_string())
+    user_identifier = kwargs.pop("user_identifier", random_string())
+    country = kwargs.pop("country", "")
+    state = kwargs.pop("state", "")
+    voted = kwargs.pop("voted", False)
+    candidate = kwargs.pop("candidate", "")
+
+    create_kwargs = dict(
+        {
+            "ip_address": ip_address,
+            "user_identifier": user_identifier,
+            "country": country,
+            "state": state,
+            "voted": voted,
+            "candidate": candidate,
+        },
+        **kwargs,
+    )
+
+    return Vote.objects.create(**create_kwargs)

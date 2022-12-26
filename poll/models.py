@@ -4,6 +4,8 @@ from gcloudc.db.models.fields.charfields import CharField
 
 from core.models import TimeStampModel
 
+from .constants import Countries, States
+
 
 class Question(TimeStampModel):
     """Class for individual question"""
@@ -41,7 +43,7 @@ class Question(TimeStampModel):
 
         return result
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.question_text} - {self.status}"
 
     def save(self, *args, **kwargs):
@@ -67,3 +69,40 @@ class Choice(TimeStampModel):
 
     def __str__(self):
         return f"{self.choice_text} - {self.votes}"
+
+
+class Vote(TimeStampModel):
+    """
+    Voting entity to capture selected candidate for a user
+    """
+
+    ATIKU_ABUBAKAR = "ATIKU_ABUBAKAR"
+    PETER_OBI = "PETER_OBI"
+    BOLA_AHMED_TINUBU = "BOLA_AHMED_TINUBU"
+    OMOYELE_SOWORE = "OMOYELE_SOWORE"
+
+    CANDIDATES = (
+        (ATIKU_ABUBAKAR, "Atiku Abubakar"),
+        (PETER_OBI, "Peter Obi"),
+        (BOLA_AHMED_TINUBU, "Bola Ahmed Tinubu"),
+        (OMOYELE_SOWORE, "Omoyele Sowore"),
+    )
+
+    ip_address = models.CharField(max_length=100)
+    user_identifier = models.CharField(
+        max_length=100, help_text="Stores user session cookie", unique=True
+    )
+    country = models.CharField(max_length=100, choices=Countries, blank=True)
+    state = models.CharField(max_length=100, choices=States, blank=True)
+    voted = models.BooleanField(default=False)
+    candidate = models.CharField(max_length=100, choices=CANDIDATES, blank=True)
+
+    def __str__(self) -> str:
+        return f"Voted for {self.candidate} by {self.user_identifier}"
+
+    @classmethod
+    def get_candidate_count(cls, candidate) -> int:
+        return cls.objects.filter(candidate=candidate).count()
+
+    class Meta:
+        unique_together = ("user_identifier", "ip_address")

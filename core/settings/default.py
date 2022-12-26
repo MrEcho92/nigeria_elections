@@ -191,3 +191,6 @@ CSRF_COOKIE_HTTPONLY = True
 GOOGLEAUTH_OAUTH_SCOPES = ["openid", "profile", "email"]
 GOOGLEAUTH_CLIENT_ID = "xx"
 GOOGLEAUTH_CLIENT_SECRET = "xx"
+
+# Geolocation
+GEOIP_PATH = Path("geolocation")

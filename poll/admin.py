@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from core.admin import admin_site
-from poll.models import Choice, Question
+from poll.models import Choice, Question, Vote
 
 
 class ChoiceInline(admin.TabularInline):
@@ -27,3 +27,8 @@ class QuestionAdmin(admin.ModelAdmin):
 
         obj.modified_by = request.user
         return super().save_model(request, obj, form, change)
+
+
+@admin.register(Vote, site=admin_site)
+class VoteAdmin(admin.ModelAdmin):
+    pass

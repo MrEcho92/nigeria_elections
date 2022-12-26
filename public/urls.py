@@ -23,5 +23,8 @@ app_name = "public"
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("vote/", views.create_vote, name="create-vote"),
+    path("vote/<int:vote_id>/", views.vote_detail, name="cast-vote"),
+    path("vote/success/", views.vote_success, name="vote-success"),
     path("about/", views.aboutus, name="about"),
 ]
