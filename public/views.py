@@ -51,12 +51,10 @@ def index(request):
 
     candidates = dict(Vote.CANDIDATES)
     result = _get_vote_result(candidates)
-    candidates_value_exist = all(result.values()) if result else False
 
     context.update(
         {
             "result": result,
-            "candidates_value_exist": candidates_value_exist,
         }
     )
 
@@ -111,8 +109,7 @@ def vote_detail(request, vote_id):
             return HttpResponseForbidden()
 
         vote.candidate = candidate
-        vote.voted = True
-        vote.save(update_fields=["candidate", "voted"])
+        vote.save()
         return redirect("public:vote-success")
 
     return render(request, "vote.html", {"vote": vote})

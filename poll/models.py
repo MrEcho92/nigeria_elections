@@ -106,3 +106,8 @@ class Vote(TimeStampModel):
 
     class Meta:
         unique_together = ("user_identifier", "ip_address")
+
+    def save(self, *args, **kwargs):
+        if self.candidate:
+            self.voted = True
+        return super().save(*args, **kwargs)

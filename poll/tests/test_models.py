@@ -1,6 +1,5 @@
 from djangae.test import TestCase
 from django.db.utils import IntegrityError
-
 from poll.models import Choice, Question, Vote
 
 from .factories import choice_factory, question_factory, vote_factory
@@ -81,7 +80,6 @@ class VoteModel(TestCase):
         vote.country = "AU"
         vote.state = "AN"
         vote.candidate = Vote.ATIKU_ABUBAKAR
-        vote.voted = True
         vote.save()
 
         self.assertEqual(vote.get_candidate_count(Vote.ATIKU_ABUBAKAR), 1)

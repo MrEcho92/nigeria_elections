@@ -225,6 +225,8 @@ input[type="submit"] {
 
 .cast-vote-section {
     background: var(--base-complementary-color);
+    color: #fff;
+    padding: 20px 0px;
 }
 
 .choice-result {
@@ -232,12 +234,8 @@ input[type="submit"] {
     font-weight: bold;
 }
 
-.cast-vote-section {
-    color: #fff;
-}
-
 .cast-vote-section .btn {
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 
 .waggle {

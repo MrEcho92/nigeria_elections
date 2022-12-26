@@ -41,36 +41,17 @@
 </div>
 {% endif %}
 
-<div class="cast-vote-section section">
+<div class="cast-vote-section section center-align">
     <div class="container">
         <h3>Are you a Nigerian living abroad?</h3>
-        <div class="row center-align">
-            <div class="col l6 m6 s12">
-                <p class="text-body">You can vote for your favorite candidate using our online voting platform. To vote,
-                    you must reside outside of Nigeria.
-                </p>
-                <a class="waves-effect green darken-4 btn" href="{% url 'public:create-vote'%}">Cast your
-                    vote</a>
-            </div>
-            {% if candidates_value_exist %}
-            <div class="col l6 m6 s12">
-                {% for candidate, percent_count in result.items %}
-                <div class="progress-card">
-                    <div class="title">{{ candidate }}</div>
-                    <div class="progress">
-                        {% cycle '#68A672' '#E75353' '#4663C7' '#D3C753' as rowcolor silent %}
-                        <div class="bar" style="width:{{ percent_count }}%; background: {{ rowcolor }}">
-                            <p class="percent">{{ percent_count }}%</p>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-                <p>
-                    <b>Voting result so far</b>
-                </p>
-            </div>
-            {% endif %}
+        <div class="container">
+            <p>You can vote for your favorite candidate using our online voting platform. To vote,
+                you must reside outside of Nigeria.
+            </p>
+            <a class="waves-effect green darken-4 btn" href="{% url 'public:create-vote'%}">Cast your
+                vote</a>
         </div>
+
     </div>
 </div>
 
