@@ -6,6 +6,24 @@ body {
     vertical-align: baseline;
 }
 
+:root {
+    --base-color: #1b5e20;
+    --base-complementary-color: #C137B7;
+}
+
+p {
+    font-size: 16px !important;
+}
+
+select {
+    border: 1px solid var(--base-color) !important;
+    border-radius: 8px !important;
+}
+
+.text-body {
+    line-height: 24px;
+}
+
 /* pushing footer to bottom */
 .page-wrapper {
     min-height: 100vh;
@@ -14,8 +32,8 @@ body {
 /* override radio */
 [type="radio"]:checked+span:after,
 [type="radio"].with-gap:checked+span:after {
-    background-color: #1e88e5;
-    border: 2px solid #1e88e5;
+    background-color: var(--base-color);
+    border: 2px solid var(--base-color);
 }
 
 .poll_box {
@@ -43,4 +61,226 @@ body {
 
 .footer-copyright .footer-right>a {
     padding-right: 8px;
+}
+
+.collapsible-header .title {
+    font-size: 18px;
+    font-weight: light;
+    vertical-align: middle;
+}
+
+/* Cast your vote page */
+.vote .vote-card-title {
+    font-weight: 700;
+}
+
+.vote .vote-card-body {
+    line-height: 25px;
+    font-size: 16px;
+    margin: 25px 0px;
+}
+
+.vote .vote-input {
+    margin: 25px 0px;
+}
+
+.vote .vote-input .vote-input-body {
+    margin: 30px 0px;
+}
+
+.vote .vote-input .vote-input-body .vote-option {
+    margin-bottom: 18px;
+}
+
+input[type="submit"] {
+    color: #fff;
+}
+
+.vote-title {
+    margin-bottom: 60px;
+    font-weight: 700;
+}
+
+
+.vote-detail .vote-detail-card {
+    border: 2px solid var(--base-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 310px;
+    max-width: 250px;
+    border-radius: 20px;
+    margin: auto;
+}
+
+.vote-detail .vote-detail-card .img {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #eceff1;
+    border-radius: 50%;
+}
+
+.vote-detail .vote-detail-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    user-select: none;
+    border-radius: 50%;
+}
+
+.vote-detail .vote-detail-card:hover {
+    cursor: pointer;
+    transform: scale(1.02)
+}
+
+.vote-detail .vote-detail-input:checked+.vote-detail-card {
+    box-shadow: 0 0 5px 5px var(--base-color);
+    backdrop-filter: blur(2.5px);
+}
+
+.vote-btn {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.vote-detail .vote-detail-card .panel-heading {
+    padding-top: 20px;
+    padding-bottom: 8px;
+    font-size: 24px;
+    font-weight: 700;
+    color: black;
+}
+
+.vote-detail .vote-detail-card .panel-body {
+    font-size: 14px;
+}
+
+.vote-detail .row .col {
+    margin-bottom: 20px;
+}
+
+.progress-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-card .title {
+    width: 40%;
+    font-weight: 500;
+}
+
+.progress {
+    margin: 20px auto;
+    padding: 0;
+    width: 90%;
+    height: 30px;
+    overflow: hidden;
+    background: #eceff1;
+    border-radius: 6px;
+}
+
+.bar {
+    position: relative;
+    float: left;
+    min-width: 1%;
+    height: 100%;
+    background: cornflowerblue;
+}
+
+.percent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    font-size: 12px;
+    color: white;
+}
+
+/* About */
+.about-motto {
+    margin: 35px 0px;
+}
+
+.about-motto>i {
+    font-size: 24px;
+}
+
+.about-img {
+    margin-top: 30px;
+    margin-bottom: 45px;
+}
+
+/* Homepage */
+.manifesto-section {
+    margin-bottom: 40px;
+}
+
+.section {
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+.cast-vote-section {
+    background: var(--base-complementary-color);
+}
+
+.choice-result {
+    color: var(--base-complementary-color);
+    font-weight: bold;
+}
+
+.cast-vote-section {
+    color: #fff;
+}
+
+.cast-vote-section .btn {
+    margin-bottom: 15px;
+}
+
+.waggle {
+    animation: waggle 1s 3s forwards ease-out;
+}
+
+@keyframes waggle {
+    0% {
+        transform: none;
+    }
+
+    50% {
+        transform: rotateZ(-20deg) scale(1.2);
+    }
+
+    60% {
+        transform: rotateZ(25deg) scale(1.2);
+    }
+
+    67.5% {
+        transform: rotateZ(-15deg) scale(1.2);
+    }
+
+    75% {
+        transform: rotateZ(15deg) scale(1.2);
+    }
+
+    82.5% {
+        transform: rotateZ(-12deg) scale(1.2);
+    }
+
+    85% {
+        transform: rotateZ(0) scale(1.2);
+    }
+
+    100% {
+        transform: rotateZ(0) scale(1);
+    }
+}
+
+.socials-section img {
+    max-height: 300px;
+    width: 100%;
+    object-fit: contain;
+    padding-top: 5px;
 }

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Vote {% endblock %}
+
+{% block content %}
+<div class="container center-align vote-detail">
+    <h3 class="vote-title">Vote for your favourite candidate</h3>
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col s12 m6 l3">
+                <label for="ATIKU_ABUBAKAR">
+                    <input type="radio" name="candidate" id="ATIKU_ABUBAKAR" value="ATIKU_ABUBAKAR"
+                        class="vote-detail-input" />
+                    <div class="vote-detail-card">
+                        <div class="img">
+                            <img src="{% static 'picture/atiku-abubakar.jpg' %}" alt="">
+                        </div>
+                        <div class="panel-heading">Atiku Abubakar</div>
+                        <div class="panel-body">
+                            People's Democratic Party (PDP)
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <div class="col s12 m6 l3">
+                <label for="PETER_OBI">
+                    <input type="radio" name="candidate" id="PETER_OBI" value="PETER_OBI" class="vote-detail-input" />
+                    <div class="vote-detail-card">
+                        <div class="img">
+                            <img src="{% static 'picture/peterobi.jpeg' %}" alt="">
+                        </div>
+                        <div class="panel-heading">Peter Obi</div>
+                        <div class="panel-body">
+                            Labour Party
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <div class="col s12 m6 l3">
+                <label for="BOLA_AHMED_TINUBU">
+                    <input type="radio" name="candidate" id="BOLA_AHMED_TINUBU" value="BOLA_AHMED_TINUBU"
+                        class="vote-detail-input" />
+                    <div class="vote-detail-card">
+                        <div class="img">
+                            <img src="{% static 'picture/bolatinubu.jpg' %}" alt="">
+                        </div>
+                        <div class="panel-heading">Bola Ahmed Tinubu</div>
+                        <div class="panel-body">
+                            All Progressives Congress (APC)
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <div class="col s12 m6 l3">
+                <label for="OMOYELE_SOWORE">
+                    <input type="radio" name="candidate" id="OMOYELE_SOWORE" value="OMOYELE_SOWORE"
+                        class="vote-detail-input" />
+                    <div class="vote-detail-card">
+                        <div class="img">
+                            <img src="{% static 'picture/sowore.jpg' %}" alt="">
+                        </div>
+                        <div class="panel-heading">Omoyele Sowore</div>
+                        <div class="panel-body">
+                            African Action Congress (AAC)
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <input type="submit" class="waves-effect green darken-4 btn-large vote-btn" value="Cast your Vote">
+    </form>
+</div>
+
+
+{% endblock %}

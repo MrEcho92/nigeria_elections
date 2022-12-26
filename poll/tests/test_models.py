@@ -1,8 +1,9 @@
 from djangae.test import TestCase
+from django.db.utils import IntegrityError
 
-from poll.models import Choice, Question
+from poll.models import Choice, Question, Vote
 
-from .factories import choice_factory, question_factory
+from .factories import choice_factory, question_factory, vote_factory
 
 
 class QuestionModel(TestCase):
@@ -58,3 +59,37 @@ class ChoiceModel(TestCase):
         choice_factory()
 
         self.assertEqual(Choice.objects.count(), 2)
+
+
+class VoteModel(TestCase):
+    def test_create_vote(self):
+        self.assertEqual(Vote.objects.count(), 0)
+
+        vote_factory()
+        vote_factory()
+
+        self.assertEqual(Vote.objects.count(), 2)
+
+        vote_factory()
+        self.assertEqual(Vote.objects.count(), 3)
+
+    def test_get_candidate_count(self):
+        vote = vote_factory()
+
+        self.assertEqual(vote.get_candidate_count(Vote.ATIKU_ABUBAKAR), 0)
+
+        vote.country = "AU"
+        vote.state = "AN"
+        vote.candidate = Vote.ATIKU_ABUBAKAR
+        vote.voted = True
+        vote.save()
+
+        self.assertEqual(vote.get_candidate_count(Vote.ATIKU_ABUBAKAR), 1)
+
+    def test_uniquesness_btw_user_identifier_candidate(self):
+        user_id = "1234"
+        ip_address = "197.0.1"
+        vote_factory(user_identifier=user_id, ip_address=ip_address)
+
+        with self.assertRaises(IntegrityError):
+            vote_factory(user_identifier=user_id, ip_address=ip_address)

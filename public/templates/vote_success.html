@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Vote Success {% endblock %}
+
+{% block content %}
+<div class="container center-align">
+    <div class="row">
+        <div class="col s12 m2 l2"></div>
+        <div class="col s12 m8 l8">
+            <h3 class="vote-title">Thank you for your vote</h3>
+            <h4>The results so far</h4>
+            {% for candidate, percent_count in result.items %}
+            <div class="progress-card">
+                <div class="title">{{ candidate }}</div>
+                <div class="progress">
+                    {% cycle '#68A672' '#E75353' '#4663C7' '#D3C753' as rowcolor silent %}
+                    <div class="bar" style="width:{{ percent_count }}%; background: {{ rowcolor }}">
+                        <p class="percent">{{ percent_count }}%</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <a class="waves-effect green darken-4 btn-large vote-btn" href="{% url 'public:index'%}">Back to
+                homepage</a>
+        </div>
+        <div class="col s12 m2 l2"></div>
+    </div>
+</div>
+
+
+{% endblock %}
