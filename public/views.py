@@ -49,15 +49,6 @@ def index(request):
 
             return redirect("public:index")
 
-    candidates = dict(Vote.CANDIDATES)
-    result = _get_vote_result(candidates)
-
-    context.update(
-        {
-            "result": result,
-        }
-    )
-
     return render(request, "index.html", context=context)
 
 
@@ -132,10 +123,11 @@ def _get_ip_address(request):
 
 def _get_vote_result(candidates):
     total_count = Vote.objects.filter(voted=True).count()
-
-    return {
+    result = {
         v: round(Vote.get_candidate_count(k) / total_count * 100)
         if total_count
         else None
         for k, v in candidates.items()
     }
+    logger.info("Voting result: %s", result)
+    return result

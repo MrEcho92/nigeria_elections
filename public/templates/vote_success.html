@@ -13,8 +13,7 @@
             <div class="progress-card">
                 <div class="title">{{ candidate }}</div>
                 <div class="progress">
-                    {% cycle '#68A672' '#E75353' '#4663C7' '#D3C753' as rowcolor silent %}
-                    <div class="bar" style="width:{{ percent_count }}%; background: {{ rowcolor }}">
+                    <div class="bar">
                         <p class="percent">{{ percent_count }}%</p>
                     </div>
                 </div>
