@@ -3,59 +3,61 @@
 {% block title %} Vote {% endblock %}
 
 {% block content %}
-
-<div class="container center-align vote">
-    <div class="row">
-        <div class="col s12 m2 l2"></div>
-        <div class="col s12 m8 l8">
-            <h2 class="vote-card-title">Voice of the Diaspora</h2>
-            <div class="vote-card-body">
-                The official date of the upcoming Nigerian election in 2023 is February 25, 2023. There is currently no
-                platform available for diasporas to participate in online voting.
-                As a result, we developed this area to give diasporas a means of making an unofficial vote.
-            </div>
-            {% if country == "NIGERIA" %}
-            <div>
-                <p>Sorry, only Nigerians living abroad are required to vote. </p>
-                <a class="waves-effect green darken-4 btn-large" href="{% url 'public:index'%}">Back to homepage</a>
-                <a class="waves-effect green darken-4 btn-large" href="{% url 'public:vote-success'%}">Voting
-                    outcomes</a>
-            </div>
-            {% else %}
-            <div class="vote-input">
-                <form method="post">
-                    {% csrf_token %}
-                    <div class="vote-input-body">
-                        <p>To be sure you are in fact from Nigeria, we would want to ask you a few questions.</p>
-                        <label for="id_state"></label>
-                        <select class="browser-default vote-option" name="state" id="id_state" required>
-                            <option value="" disabled selected>Select your state in Nigeria</option>
-                            {% for code, state in states.items %}
-                            <option value="{{ code }}">{{ state }}</option>
-                            {% endfor %}
-                        </select>
-
-                        <label for="id_country"></label>
-                        <select class="browser-default vote-option" name="country" id="id_country" required>
-                            <option value="" disabled selected>Select your country of residence</option>
-                            {% for code, country in countries.items %}
-                            <option value="{{ code }}">{{ country }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <input type="submit"
-                        class="waves-effect green darken-4 btn-large {% if already_voted %}disabled{% endif %}"
-                        value="Next">
-                    {% if already_voted %}
-                    <a class="waves-effect green darken-4 btn-large" href="{% url 'public:vote-success'%}">Voting
+<div class="vote">
+    <div class="container center-align">
+        <div class="row">
+            <div class="col s12 m2 l2"></div>
+            <div class="col s12 m8 l8">
+                <h2 class="vote-card-title">Voice of the Diaspora</h2>
+                <div class="vote-card-body">
+                    The official date of the upcoming Nigerian election in 2023 is February 25, 2023. There is currently
+                    no
+                    platform available for diasporas to participate in online voting.
+                    As a result, we developed this area to give diasporas a means of making an unofficial vote.
+                </div>
+                {% if country == "NIGERIA" %}
+                <div>
+                    <p>Sorry, only Nigerians living abroad are required to vote. </p>
+                    <a class="waves-effect green darken-4 btn-large" href="{% url 'public:index'%}">Back to homepage</a>
+                    <a class="waves-effect grey darken-1 btn-large" href="{% url 'public:vote-success'%}">Voting
                         outcomes</a>
-                    <p class="waggle">You've already voted!</p>
-                    {% endif %}
-                </form>
+                </div>
+                {% else %}
+                <div class="vote-input">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="vote-input-body">
+                            <p>To be sure you are in fact from Nigeria, we would want to ask you a few questions.</p>
+                            <label for="id_state"></label>
+                            <select class="browser-default vote-option" name="state" id="id_state" required>
+                                <option value="" disabled selected>Select your state in Nigeria</option>
+                                {% for code, state in states.items %}
+                                <option value="{{ code }}">{{ state }}</option>
+                                {% endfor %}
+                            </select>
+
+                            <label for="id_country"></label>
+                            <select class="browser-default vote-option" name="country" id="id_country" required>
+                                <option value="" disabled selected>Select your country of residence</option>
+                                {% for code, country in countries.items %}
+                                <option value="{{ code }}">{{ country }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <input type="submit"
+                            class="waves-effect green darken-4 btn-large {% if already_voted %}disabled{% endif %}"
+                            value="Next">
+                        {% if already_voted %}
+                        <a class="waves-effect green darken-4 btn-large" href="{% url 'public:vote-success'%}">Voting
+                            outcomes</a>
+                        <p class="waggle">You've already voted!</p>
+                        {% endif %}
+                    </form>
+                </div>
+                {% endif %}
             </div>
-            {% endif %}
+            <div class="col s12 m2 l2"></div>
         </div>
-        <div class="col s12 m2 l2"></div>
     </div>
 </div>
 {% endblock %}

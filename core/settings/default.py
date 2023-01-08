@@ -180,7 +180,7 @@ CSP_SCRIPT_SRC = (
 CSP_IMG_SRC = ("'self'",)
 CSP_MEDIA_SRC = ("'self'",)
 CSP_CONNECT_SRC = ("'self'",)
-
+CSP_INCLUDE_NONCE_IN = ["script-src"]
 
 LOGIN_URL = "/_dj/login/"
 
