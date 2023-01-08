@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Home {% endblock %}
+
+{% block content %}
+<div class="candidates">
+    <div class="candidate-section">
+        <div class="container">
+            <div>
+                <h3 class="candidates-section-title">The Vote</h3>
+                <p class="text-body">
+                    The Nigerian presidential election is a significant event in Nigeria's democratic
+                    process, and the outcome will have significant implications for the country's future direction. This
+                    is
+                    where Nigerians will choose a new President for the country. Eligible
+                    voters must be registered and have a valid voter's card in order to
+                    vote in the presidential election. </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cast-vote-section candidate-section">
+        <div class="container">
+            <h3 class="candidates-section-title">Why I should cast my vote in the election?</h3>
+            <div>
+                <p class="text-body">1. This election will have repercussions. Each vote counts.</p>
+                <p class="text-body">2. Voting provides a chance for change. Be the change you want to see.</p>
+                <p class="text-body">3. You have the right. You lose your voice when you don't vote.</p>
+                <p class="text-body">4. Nigeria's future is counting on you!</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="manifesto-section candidate-section">
+        {% include "manifesto/manifestos.html" %}
+    </div>
+
+    {% if question %}
+    <div class="poll-section">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m2 l3"></div>
+                <div class="col s12 m8 l6 poll_box">
+                    <small>POLLING QUESTION</small>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="poll_box__mb">
+                            <h5>{{ question.question_text }}</h5>
+                            {% for choice in choices %}
+                            <p>
+                                <label for="{{ choice.id }}">
+                                    <input type="radio" name="choice" id="{{ choice.id }}" value="{{ choice.id }}" />
+                                    <span>{{ choice.choice_text }}</span>
+                                    {% for choice_id, val in choice_percent.items %}
+                                    {% if choice_id == choice.id %}
+                                    <span class="choice-result">{{ val }}%</span>
+                                    {% endif %}
+                                    {% endfor %}
+                                </label>
+                            </p>
+                            {% endfor %}
+                            <input type="submit" class="waves-effect green darken-4 btn" value="Vote">
+                        </div>
+                    </form>
+                </div>
+                <div class="col s12 m2 l3"></div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="socials-section candidate-section">
+        <div class="container">
+            <h3 class="candidates-section-title">Social media sentiments on candidates</h3>
+            <div class="row">
+                <div class="col l6 m6 s12">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{% static 'picture/data/obi_sentiment_by_state.png' %}">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Top locations for tweets about
+                                Peter Obi<i class="material-icons right">more_vert</i></span>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Top locations for tweets about
+                                Peter Obi<i class="material-icons right">close</i></span>
+                            <p>Many tweets about Peter Obi are in major cities and London
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col l6 m6 s12">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{% static 'picture/data/obi_sentiment_pie_chart.png' %}">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Public perception of Peter Obi<i
+                                    class="material-icons right">more_vert</i></span>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Public perception of Peter Obi<i
+                                    class="material-icons right">close</i></span>
+                            <p>There are more negative than positive tweets about Peter Obi.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col l6 m6 s12">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{% static 'picture/data/tinubu_sentiment_by_state.png' %}">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Top locations for tweets about
+                                Bola Tinubu<i class="material-icons right">more_vert</i></span>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Top locations for tweets about Bola
+                                Tinubu<i class="material-icons right">close</i></span>
+                            <p>Many tweets about Bola tinubu are in major cities</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col l6 m6 s12">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{% static 'picture/data/tinubu_sentiment_pie_chart.png' %}">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Public perception of Bola
+                                Tinubu<i class="material-icons right">more_vert</i></span>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Public perception of Bola Tinubu<i
+                                    class="material-icons right">close</i></span>
+                            <p>There are more positive than negative tweets about Bola Tinubu.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col l6 m6 s12">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{% static 'picture/data/atiku_sentiment_by_state.png' %}">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Top locations for tweets about
+                                Atiku Abubakar<i class="material-icons right">more_vert</i></span>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Top locations for tweets about Atiku
+                                Abubakar<i class="material-icons right">close</i></span>
+                            <p>Many tweets about Atiku are in major northern cities</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col l6 m6 s12">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{% static 'picture/data/atiku_sentiment_pie_chart.png' %}">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Public perception of Atiku
+                                Abubakar<i class="material-icons right">more_vert</i></span>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Public perception of Atiku Abubakar<i
+                                    class="material-icons right">close</i></span>
+                            <p>70% of tweets about Atiku are neutral and very few are negative.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="candidate-btn">
+        <div class="container center-align">
+            <a class="waves-effect green darken-4 btn-large" href="{% url 'public:create-vote'%}">Cast your
+                vote</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -17,7 +17,10 @@ def aboutus(request):
 
 
 def index(request):
+    return render(request, "index.html")
 
+
+def candidates_info(request):
     question = Question.active()
 
     context = {
@@ -47,9 +50,9 @@ def index(request):
             selected_choice.votes += 1
             selected_choice.save()
 
-            return redirect("public:index")
+            return redirect("public:candidates-info")
 
-    return render(request, "index.html", context=context)
+    return render(request, "candidates_info.html", context=context)
 
 
 def create_vote(request):

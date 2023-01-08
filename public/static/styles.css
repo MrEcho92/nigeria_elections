@@ -4,6 +4,7 @@ body {
     padding: 0;
     border: 0;
     vertical-align: baseline;
+    font-family: 'Open Sans', sans-serif;
 }
 
 :root {
@@ -21,7 +22,9 @@ select {
 }
 
 .text-body {
-    line-height: 24px;
+    line-height: 28px;
+    text-align: left;
+    font-size: 18px !important;
 }
 
 /* pushing footer to bottom */
@@ -39,7 +42,7 @@ select {
 .poll_box {
     outline-style: solid;
     outline-width: 2px;
-    outline-color: #eceff1;
+    outline-color: var(--base-complementary-color);
     margin: 20px 0;
 }
 
@@ -55,10 +58,6 @@ select {
     margin-top: 30px;
 }
 
-.md-grid {
-    padding-top: 20px;
-}
-
 .footer-copyright .footer-right>a {
     padding-right: 8px;
 }
@@ -69,15 +68,41 @@ select {
     vertical-align: middle;
 }
 
+.nav-section {
+    box-shadow: none;
+}
+
+.brand-logo {
+    color: #000 !important;
+}
+
+.head {
+    color: var(--base-color);
+    font-weight: 600;
+}
+
+.navbar .headings>li>a {
+    color: #000 !important;
+    font-size: 18.5px !important;
+}
+
+.sidenav-trigger .material-icons {
+    color: var(--base-color);
+}
+
 /* Cast your vote page */
 .vote .vote-card-title {
-    font-weight: 700;
+    font-weight: 500;
 }
 
 .vote .vote-card-body {
-    line-height: 25px;
-    font-size: 16px;
-    margin: 25px 0px;
+    line-height: 28px;
+    font-size: 16.5px;
+    margin: 40px 0px;
+}
+
+.vote .btn-large {
+    margin-bottom: 20px !important;
 }
 
 .vote .vote-input {
@@ -98,7 +123,7 @@ input[type="submit"] {
 
 .vote-title {
     margin-bottom: 60px;
-    font-weight: 700;
+    font-weight: 500;
 }
 
 
@@ -209,24 +234,67 @@ input[type="submit"] {
 }
 
 .about-img {
-    margin-top: 30px;
+    margin-top: 35px;
     margin-bottom: 45px;
 }
 
-/* Homepage */
-.manifesto-section {
-    margin-bottom: 40px;
+.about-email {
+    color: var(--base-color);
 }
 
-.section {
-    margin-top: 35px;
-    margin-bottom: 20px;
+/* Homepage & candidates */
+.candidates {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
-.cast-vote-section {
-    background: var(--base-complementary-color);
-    color: #fff;
-    padding: 20px 0px;
+.homepage .time-header {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.homepage .time-header .title {
+    font-size: 55px;
+    margin-bottom: 30px;
+}
+
+.homepage .time-header .time-header-title-sm {
+    display: block;
+}
+
+.homepage .time-header #countdown-timer {
+    font-size: 65px !important;
+    font-weight: 600;
+    padding: 10px 0px;
+}
+
+.home-section .home-card {
+    position: relative;
+    margin: 0.5rem 0 1rem 0;
+}
+
+.home-section .home-card .home-card-content {
+    padding: 24px;
+}
+
+.home-section .home-card .home-card-action {
+    position: relative;
+    padding: 16px 24px;
+}
+
+.home-card .home-card-content .home-card-title {
+    display: block;
+    line-height: 32px;
+    margin-bottom: 8px;
+}
+
+.home-card .home-card-title {
+    font-size: 24px;
+    font-weight: 300;
+}
+
+.home-card .home-card-content p {
+    margin: 0;
 }
 
 .choice-result {
@@ -234,9 +302,6 @@ input[type="submit"] {
     font-weight: bold;
 }
 
-.cast-vote-section .btn {
-    margin-bottom: 30px;
-}
 
 .waggle {
     animation: waggle 1s 3s forwards ease-out;
@@ -276,9 +341,14 @@ input[type="submit"] {
     }
 }
 
+
 .socials-section img {
-    max-height: 300px;
+    max-height: 350px;
     width: 100%;
     object-fit: contain;
     padding-top: 5px;
+}
+
+.candidate-section {
+    margin: 40px 0px;
 }
