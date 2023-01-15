@@ -6,7 +6,7 @@ from core.secrets import Secrets
 from .default import *  # noqa: F403
 
 ALLOWED_HOSTS = [
-    ".appspot.com",
+    "*",
 ]
 
 APP_SECRETS = get(Secrets)
