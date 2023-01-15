@@ -4,6 +4,7 @@ from django.contrib.gis.geoip2 import GeoIP2
 from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404, redirect, render
 from geoip2.errors import AddressNotFoundError
+
 from poll.constants import Countries, States
 from poll.forms import VoteForm
 from poll.models import Choice, Question, Vote
