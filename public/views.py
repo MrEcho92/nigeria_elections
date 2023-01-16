@@ -93,8 +93,8 @@ def create_vote(request):
 
 def vote_detail(request, vote_id):
     vote = get_object_or_404(Vote, pk=vote_id)
-
-    if vote.user_identifier != request.session.session_key:
+    ip_address = _get_ip_address(request)
+    if vote.ip_address != ip_address:
         return HttpResponseForbidden()
 
     if request.method == "POST":
