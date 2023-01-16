@@ -84,7 +84,7 @@ def create_vote(request):
         "states": dict(States),
         "countries": dict(Countries),
         "already_voted": Vote.objects.filter(
-            ip_address=ip_address, voted=True
+            user_identifier=request.session.session_key, voted=True
         ).exists(),
     }
 
@@ -93,8 +93,8 @@ def create_vote(request):
 
 def vote_detail(request, vote_id):
     vote = get_object_or_404(Vote, pk=vote_id)
-    ip_address = _get_ip_address(request)
-    if vote.ip_address != ip_address:
+
+    if vote.user_identifier != request.session.session_key:
         return HttpResponseForbidden()
 
     if request.method == "POST":
