@@ -1,12 +1,16 @@
 # Analytics Project
 
-This project utilises data to keep users informed. This project is built using [Djangae scaffold](https://gitlab.com/potato-oss/djangae/djangae-scaffold)
+This project utilises data to keep users informed. This project is built using [Djangae scaffold](https://gitlab.com/potato-oss/djangae/djangae-scaffold).
+
+# Website
+![web archive org_web_20230117215125_https___transformnaija org_ (2)](https://github.com/MrEcho92/nigeria_elections/assets/60829927/2aadec02-bbc9-4996-aec7-6fb605b82ed3)
+
 
 ## Prerequisite 
 
 - Download Java 17 sdk for your computer
 [install Java](https://www.oracle.com/java/technologies/downloads/#jdk17-mac)
-- Download Google SDK and follow instructions for installation [gcloud CLI](https://cloud.google.com/sdk/docs/install)
+- Download Google sdk and follow instructions for installation [gcloud CLI](https://cloud.google.com/sdk/docs/install)
 
 # Formatting and linting
  - black
